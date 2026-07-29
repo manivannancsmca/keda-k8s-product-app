@@ -13,8 +13,8 @@
 	<groupId>com.product.app</groupId>
 	<artifactId>keda-k8s-product-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+	 <name>product-service</name>
+	<description>Product Service with KEDA Autoscaling</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -75,6 +75,11 @@
       <optional>true</optional>
       <scope>runtime</scope>
     </dependency>
+	<dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+		
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
