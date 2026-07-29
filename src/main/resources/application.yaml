@@ -5,9 +5,9 @@ spring:
   application:
     name: keda-k8s-product-app
   datasource:
-    url: jdbc:mysql://localhost:3307/product_catalog?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: appuser
-    password: apppassword
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3307}/${MYSQL_DATABASE:product_db}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${MYSQL_USER:appuser}
+    password: ${MYSQL_PASSWORD:apppassword}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 50
@@ -33,13 +33,25 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info
+        include: health,info,metrics,prometheus
+      base-path: /actuator
   endpoint:
     health:
-      show-details: when-authorized
+      show-details: always
+      probes:
+        enabled: true
+    metrics:
+      access: UNRESTRICTED
+    prometheus:
+      access: UNRESTRICTED
   metrics:
     tags:
-      application: keda-k8s-product-app
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        '[http.server.requests]': true
+      slo:
+        '[http.server.requests]': 50ms,100ms,200ms,500ms,1s,2s
 
 logging:
   level:

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # -----------------------------
+  # DATABASES
+  # -----------------------------
+
+  product-db:
+    image: mysql:8.0
+    container_name: product-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: product_db
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+    ports:
+      - "3311:3306"
+    volumes:
+      - product_db_data:/var/lib/mysql
+    command: 
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+
+volumes:
+  product_db_data:
+
+networks:
+  microservices-network:
+    driver: bridge
