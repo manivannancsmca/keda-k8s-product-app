@@ -32,6 +32,9 @@ management:
   endpoint:
     health:
       show-details: when-authorized
+  metrics:
+    tags:
+      application: keda-k8s-product-app
 
 logging:
   level:
