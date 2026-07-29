@@ -18,6 +18,7 @@ import com.keda.k8s.product.app.entity.ProductCategory;
 import com.keda.k8s.product.app.exception.ProductNotFoundException;
 import com.keda.k8s.product.app.repository.ProductRepository;
 
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
+@Timed(value = "product.service.metrics")
 public class ProductService {
 
     private final ProductRepository productRepository;
