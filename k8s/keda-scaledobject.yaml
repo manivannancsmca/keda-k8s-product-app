@@ -49,8 +49,9 @@ spec:
     # Requires Prometheus + Metrics Server setup
     - type: prometheus
       metadata:
-        serverAddress: http://prometheus.monitoring.svc:9090
+        # serverAddress: http://cluster.local
+        serverAddress: http://prometheus-service.default.svc.cluster.local:9090
         metricName: http_server_requests_seconds_count
         threshold: "100"  # Scale when > 100 req/sec per pod
         query: |
-          sum(rate(http_server_requests_seconds_count{namespace="default",service="product-service"}[2m]))
+          sum(rate(http_server_requests_seconds_count{namespace="default"}[2m]))
