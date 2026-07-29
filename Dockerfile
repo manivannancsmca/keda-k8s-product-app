@@ -17,7 +17,7 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 RUN apk add --no-cache curl
 
-COPY --from=builder /app/target/product-service-1.0.0.jar app.jar
+COPY --from=builder /app/target/keda-k8s-product-app-1.0.0.jar app.jar
 
 RUN chown -R appuser:appgroup /app
 
