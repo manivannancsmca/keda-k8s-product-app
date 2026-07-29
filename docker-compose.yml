@@ -15,7 +15,7 @@ services:
       MYSQL_USER: appuser
       MYSQL_PASSWORD: apppassword
     ports:
-      - "3311:3306"
+      - "3307:3306"
     volumes:
       - product_db_data:/var/lib/mysql
     command: 
