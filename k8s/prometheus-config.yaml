@@ -14,3 +14,4 @@ data:
         metrics_path: '/actuator/prometheus'
         static_configs:
           - targets: ['product-service:8080'] # Your Spring Boot Service name and container port
+          
