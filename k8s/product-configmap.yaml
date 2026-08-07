@@ -8,3 +8,4 @@ data:
   MYSQL_PORT: "3306"
   MYSQL_DATABASE: "product_db"
   JAVA_OPTS: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/./urandom"
+  
