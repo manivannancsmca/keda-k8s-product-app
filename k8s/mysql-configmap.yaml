@@ -14,3 +14,4 @@ data:
     innodb_log_file_size=64M
     slow_query_log=1
     long_query_time=2
+    
